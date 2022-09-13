@@ -19,6 +19,9 @@ public class BankAccount
         if (amountToWithdraw <= _balance)
         {
             _balance -= amountToWithdraw;
+        } else
+        {
+          throw new OverdraftException();
         }
     }
 }

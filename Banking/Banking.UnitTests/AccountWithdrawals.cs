@@ -33,9 +33,32 @@ public class AccountWithdrawals
         var account = new BankAccount();
         var openingBalance = account.GetBalance();
         var amountToWithdraw = openingBalance + .01M;
+      
+        try
+        {
+            account.Withdraw(amountToWithdraw);
+        }
+        catch (OverdraftException)
+        {
+           
+            // Swallow!
+        }
+        finally
+        {
 
-        account.Withdraw(amountToWithdraw);
+            Assert.Equal(openingBalance, account.GetBalance());
+           
+        }
+    }
 
-        Assert.Equal(openingBalance, account.GetBalance());
+    [Fact]
+    public void OverdraftThrowsAnException()
+    {
+        var account = new BankAccount();
+
+        Assert.Throws<OverdraftException>(() =>
+             account.Withdraw(account.GetBalance() + 1)
+        );
+
     }
 }
