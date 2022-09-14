@@ -2,11 +2,20 @@
 
 public class BankAccount
 {
+    private readonly ICalculateAccountBonuses _bonusCalculator;
+
+    public BankAccount(ICalculateAccountBonuses bonusCalculator)
+    {
+        _bonusCalculator = bonusCalculator;
+    }
 
     private decimal _balance = 5000M; //JFHCI
     public void Deposit(decimal amountToDeposit)
     {
-        _balance += amountToDeposit;
+        // Write the Code You Wish You Had
+       
+        decimal bonus = _bonusCalculator.GetBonusForDepositOnAccount(100000, amountToDeposit);
+        _balance += amountToDeposit + bonus; 
     }
 
     public decimal GetBalance()
