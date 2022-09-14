@@ -3,7 +3,7 @@
 public class BankAccount
 {
 
-    private decimal _balance = 5000M;
+    private decimal _balance = 5000M; //JFHCI
     public void Deposit(decimal amountToDeposit)
     {
         _balance += amountToDeposit;
@@ -16,12 +16,18 @@ public class BankAccount
 
     public void Withdraw(decimal amountToWithdraw)
     {
-        if (amountToWithdraw <= _balance)
+        if (AccountHasAvailableFunds(amountToWithdraw))
         {
             _balance -= amountToWithdraw;
-        } else
-        {
-          throw new OverdraftException();
         }
+        else
+        {
+            throw new OverdraftException();
+        }
+    }
+
+    private bool AccountHasAvailableFunds(decimal amountToWithdraw)
+    {
+        return amountToWithdraw <= _balance;
     }
 }
