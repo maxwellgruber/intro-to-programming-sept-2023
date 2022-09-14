@@ -14,7 +14,7 @@ public class BankAccount
     {
         // Write the Code You Wish You Had
        
-        decimal bonus = _bonusCalculator.GetBonusForDepositOnAccount(100000, amountToDeposit);
+        decimal bonus = _bonusCalculator.GetBonusForDepositOnAccount(_balance, amountToDeposit);
         _balance += amountToDeposit + bonus; 
     }
 
