@@ -1,0 +1,24 @@
+
+### Get all accounts
+
+GET http://localhost:9000/accounts HTTP/1.1
+Accept: application/json
+
+
+
+### Get An Account
+
+GET http://localhost:9000/accounts/333 HTTP/1.1
+Accept: application/json
+
+
+
+### Add An Account
+
+POST http://localhost:9000/accounts HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Jeff Gonzalez"
+}
